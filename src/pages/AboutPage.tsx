@@ -1,5 +1,5 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
-import CompareSlider from "@/components/CompareSlider";
+import { Compare } from "@/components/ui/compare";
 import InfoCard from "@/components/InfoCard";
 import Pill from "@/components/Pill";
 import { profile, skills } from "@/data/profile";
@@ -19,8 +19,13 @@ export default function AboutPage() {
         subtitle="Hover the slider to flip between my profile and skills."
       />
 
-      <div className="mx-auto mb-10 max-w-md">
-        <CompareSlider first={profileImg} second={skillsImg} />
+      <div className="mb-10 flex items-center justify-end">
+        <Compare
+          firstImage={profileImg}
+          secondImage={skillsImg}
+          className="aspect-square w-full max-w-[500px] h-full max-h-[500px] rounded-2xl border border-surface-2 bg-bg-elevated"
+          slideMode="hover"
+        />
       </div>
 
       <div className="mb-3.5 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">

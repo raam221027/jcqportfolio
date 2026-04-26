@@ -10,7 +10,7 @@ export default function Hero() {
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
       className="relative flex min-h-[calc(100vh-60px)] items-center justify-center overflow-hidden px-6"
     >
-      <div className="relative z-10 mx-auto max-w-3xl text-center">
+      <div className="relative z-10 mx-auto max-w-1xl text-center">
         <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-fg sm:text-6xl md:text-7xl">
           Hi, I'm <span className="gradient-text">Joemar Questadio</span>
         </h1>
