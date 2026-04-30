@@ -1,5 +1,6 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
 import Pill from "@/components/Pill";
+import TechStackSphere from "@/components/TechStackSphere";
 import { projects, type ProjectStatus } from "@/data/projects";
 
 const VARIANT_FOR: Record<ProjectStatus, "success" | "indigo" | "cyan"> = {
@@ -12,6 +13,51 @@ export default function ProjectsPage() {
   return (
     <PageShell className="mx-auto max-w-5xl">
       <PageHeader eyebrow="Projects" title="Selected work" />
+
+      <section className="mb-12 grid items-center gap-8 sm:mb-16 sm:gap-10 lg:grid-cols-2">
+        <div className="order-2 text-center lg:order-1 lg:text-left">
+          <div className="mb-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-fg-muted">
+            Tech stack
+          </div>
+          <h3 className="mb-4 text-2xl font-bold leading-tight tracking-tight sm:text-3xl">
+            <span className="gradient-text">Tools</span> that ship these projects
+          </h3>
+          <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-fg-muted sm:text-base lg:mx-0">
+            A 3D orbit of the libraries, languages, and platforms behind every project below. Drag
+            or hover to spin — the sphere accelerates as your cursor approaches the edge.
+          </p>
+          <div className="flex flex-wrap justify-center gap-1.5 lg:justify-start">
+            {[
+              "React",
+              "TypeScript",
+              "Tailwind CSS",
+              "shadcn/ui",
+              "Laravel",
+              "MySQL",
+              "MS SQL Server",
+              "Docker",
+              "GitHub",
+              "Git",
+              "Postman",
+              "VS Code",
+              "HTML5",
+              "CSS3",
+              "PHP",
+              "Node.js",
+              "Vite",
+            ].map((t) => (
+              <Pill key={t}>{t}</Pill>
+            ))}
+          </div>
+        </div>
+        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+          <TechStackSphere radius={180} speed={0.03} hoverSpeed={0.03} />
+        </div>
+      </section>
+
+      <div className="mb-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-fg-muted">
+        Projects
+      </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {projects.map((p) => (
           <article
