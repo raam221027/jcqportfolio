@@ -1,10 +1,12 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
 import { Compare } from "@/components/ui/compare";
 import InfoCard from "@/components/InfoCard";
+import MagnifyImage from "@/components/MagnifyImage";
 import Pill from "@/components/Pill";
 import { profile, skills } from "@/data/profile";
 import profileImg from "@/assets/profile.png";
 import skillsImg from "@/assets/skills.png";
+import gradImg from "@/assets/grad_photo.jpg";
 
 export default function AboutPage() {
   return (
@@ -19,7 +21,21 @@ export default function AboutPage() {
         subtitle="Hover the slider to flip between my profile and skills."
       />
 
-      <div className="mb-10 flex items-center justify-end">
+      <div className="mb-10 grid items-center justify-items-center gap-6 sm:grid-cols-2 ">
+        <div className="relative flex aspect-square w-full max-w-[500px] items-center justify-center overflow-hidden rounded-2xl border border-surface-2 bg-bg-elevated">
+          <img
+            src={gradImg}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl opacity-60"
+          />
+          <span className="absolute inset-0 bg-bg/420" />
+          <img
+            src={gradImg}
+            alt="Graduation photo"
+            className="relative h-full w-full object-contain"
+          />
+        </div>
         <Compare
           firstImage={profileImg}
           secondImage={skillsImg}
