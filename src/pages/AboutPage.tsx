@@ -1,10 +1,8 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
-import { Compare } from "@/components/ui/compare";
+import { TerminalBoot } from "@/components/ui/terminal-boot";
 import InfoCard from "@/components/InfoCard";
 import Pill from "@/components/Pill";
 import { profile, skills } from "@/data/profile";
-import profileImg from "@/assets/profile.png";
-import skillsImg from "@/assets/skills.png";
 import gradImg from "@/assets/grad_photo.jpg";
 
 export default function AboutPage() {
@@ -17,7 +15,7 @@ export default function AboutPage() {
             A little about <span className="gradient-text">me</span>.
           </>
         }
-        subtitle="Hover the slider to flip between my profile and skills."
+        subtitle="Booting the portfolio — a quick init log of how it came together."
       />
 
       <div className="mb-10 grid items-center justify-items-center gap-6 sm:grid-cols-2 ">
@@ -35,12 +33,7 @@ export default function AboutPage() {
             className="relative h-full w-full object-contain"
           />
         </div>
-        <Compare
-          firstImage={profileImg}
-          secondImage={skillsImg}
-          className="aspect-square w-full max-w-[500px] h-full max-h-[500px] rounded-2xl border border-surface-2 bg-bg-elevated"
-          slideMode="hover"
-        />
+        <TerminalBoot className="aspect-square h-full max-h-[500px] w-full max-w-[500px]" />
       </div>
 
       <div className="mb-3.5 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
