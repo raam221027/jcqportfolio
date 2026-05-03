@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import DotPattern from "@/components/DotPattern";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import AboutPage from "@/pages/AboutPage";
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </AnimatePresence>
+        <Footer />
       </div>
     </>
   );
