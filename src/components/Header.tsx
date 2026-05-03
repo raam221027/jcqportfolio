@@ -63,7 +63,6 @@ export default function Header() {
             <NavLink
               key={it.to}
               to={it.to}
-              end={it.end}
               className={({ isActive }) =>
                 [
                   "text-sm transition-colors",
