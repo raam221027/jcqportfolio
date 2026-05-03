@@ -202,9 +202,9 @@ export default function TechStackSphere({
   return (
     <div
       className={[
-        "relative flex max-w-full items-center justify-center rounded-3xl",
+        "relative flex max-w-full items-center justify-center rounded-full",
         "bg-bg-deep ring-1 ring-border shadow-glow-indigo",
-        "p-3 sm:p-4 md:p-6",
+        "aspect-square p-3 sm:p-4 md:p-6",
         className,
       ].join(" ")}
       style={style}
