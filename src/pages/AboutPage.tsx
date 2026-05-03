@@ -1,7 +1,6 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
 import { Compare } from "@/components/ui/compare";
 import InfoCard from "@/components/InfoCard";
-import MagnifyImage from "@/components/MagnifyImage";
 import Pill from "@/components/Pill";
 import { profile, skills } from "@/data/profile";
 import profileImg from "@/assets/profile.png";
