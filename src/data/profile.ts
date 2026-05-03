@@ -18,7 +18,7 @@ export const profile = {
   location: "Strongsville, Ohio",
   origin: "Cagayan de Oro, Philippines",
   timezone: "UTC−5 · open to remote",
-  bio: "I'm Joemar — a Web Developer who likes shipping clean, useful tools.",
+  bio: "I'm Joemar, a Full Stack Developer specializing in Laravel, React, and scalable web applications.",
   bioMore: "BSIT graduate, Programmer of the Year 2024. Currently based in Strongsville, OH.",
   currently: [
     "Building React + Laravel apps",

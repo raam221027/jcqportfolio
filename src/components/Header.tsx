@@ -5,7 +5,6 @@ import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
 
 const NAV = [
-  { to: "/", label: "All", end: true },
   { to: "/about", label: "About" },
   { to: "/projects", label: "Projects" },
   { to: "/certificates", label: "Certificates" },
@@ -56,7 +55,7 @@ export default function Header() {
           to="/"
           className="rounded-md bg-gray-800 px-2 py-1 font-display text-2xl font-bold leading-none text-fg hover:bg-gray-700"
         >
-          JQ
+          Portfolio.
         </Link>
 
         <nav className="hidden items-center gap-5 md:flex lg:gap-6">

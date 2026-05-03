@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-surface-1 px-6 py-3">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
-        <p className="text-sm text-fg-muted">&copy; 2026 Joemar Questadio. All rights reserved.</p>
+        <p className="text-sm text-fg-muted">&copy; 2026 JQ. All rights reserved.</p>
         <div className="flex items-center gap-2">
           {SOCIALS.map(({ href, label, Icon }) => (
             <a
