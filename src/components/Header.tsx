@@ -46,7 +46,8 @@ export default function Header() {
   return (
     <header
       className={[
-        "fixed left-0 right-0 top-2 z-50 px-4 py-3 transition-all duration-300 sm:px-6",
+        "fixed left-0 right-0 z-50 px-4 py-3 transition-all duration-300 sm:px-6",
+        scrolled || menuOpen ? "top-0" : "top-0",
         headerBgClass,
       ].join(" ")}
     >
