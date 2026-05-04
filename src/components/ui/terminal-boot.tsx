@@ -45,9 +45,22 @@ const SCRIPT: ScriptLine[] = [
   { text: "[ready] Serving portfolio at https://raam221027.github.io", kind: "ready" },
 ];
 
-const TYPE_MS = 38;
-const LINE_MS = 500;
+const PAUSE_AFTER_RUN_MS = 2000;
 const PAUSE_AFTER_PROMPT_MS = 420;
+const PAUSE_AFTER_BUILD_MS = 1000;
+const LINE_MS = 500;
+const LINE_MS_FAST = 100;
+
+const RUN_END = "npm run".length;
+const BUILD_COMPLETE_INDEX = SCRIPT.findIndex((l) => l.text === "Build complete");
+
+function nextTypeDelay(charIndex: number): number {
+  const ch = PROMPT[charIndex - 1];
+  const base = 70 + Math.random() * 90;
+  if (ch === " " || ch === ":") return base + 60 + Math.random() * 80;
+  if (ch && /[a-zA-Z]/.test(ch) && Math.random() < 0.15) return base + 90;
+  return base;
+}
 
 type Phase = "typing" | "revealing" | "holding";
 
@@ -67,13 +80,20 @@ export function TerminalBoot({ className }: { className?: string }) {
 
     if (phase === "typing") {
       if (typed < PROMPT.length) {
-        timerRef.current = window.setTimeout(() => setTyped((n) => n + 1), TYPE_MS);
+        const delay = typed === RUN_END ? PAUSE_AFTER_RUN_MS : nextTypeDelay(typed);
+        timerRef.current = window.setTimeout(() => setTyped((n) => n + 1), delay);
       } else {
         timerRef.current = window.setTimeout(() => setPhase("revealing"), PAUSE_AFTER_PROMPT_MS);
       }
     } else if (phase === "revealing") {
       if (revealed < SCRIPT.length) {
-        timerRef.current = window.setTimeout(() => setRevealed((n) => n + 1), LINE_MS);
+        const lineDelay =
+          revealed === BUILD_COMPLETE_INDEX + 1
+            ? PAUSE_AFTER_BUILD_MS
+            : revealed > BUILD_COMPLETE_INDEX
+              ? LINE_MS_FAST
+              : LINE_MS;
+        timerRef.current = window.setTimeout(() => setRevealed((n) => n + 1), lineDelay);
       } else {
         timerRef.current = window.setTimeout(() => setPhase("holding"), 400);
       }
