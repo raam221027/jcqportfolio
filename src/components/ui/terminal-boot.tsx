@@ -45,9 +45,9 @@ const SCRIPT: ScriptLine[] = [
   { text: "[ready] Serving portfolio at https://raam221027.github.io", kind: "ready" },
 ];
 
-const PAUSE_AFTER_RUN_MS = 2000;
+const PAUSE_AFTER_RUN_MS = 1000;
 const PAUSE_AFTER_PROMPT_MS = 420;
-const PAUSE_AFTER_BUILD_MS = 1000;
+const PAUSE_AFTER_BUILD_MS = 2000;
 const LINE_MS = 500;
 const LINE_MS_FAST = 100;
 
