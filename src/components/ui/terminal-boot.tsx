@@ -1,30 +1,52 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-type LineKind = "check" | "info" | "list" | "success" | "url";
+type LineKind =
+  | "command"
+  | "step"
+  | "check"
+  | "info"
+  | "indent"
+  | "success"
+  | "ready"
+  | "blank";
 type ScriptLine = { text: string; kind: LineKind };
 
-const PROMPT = "npm raam221027@portfolio init";
+const PROMPT = "npm run init:portfolio";
 
 const SCRIPT: ScriptLine[] = [
-  { text: "Design checks.", kind: "check" },
-  { text: "Setting up portfolio framework using React Typescript.", kind: "check" },
-  { text: "Implementing responsive design with Tailwind CSS.", kind: "check" },
-  { text: "Creating component architecture.", kind: "check" },
-  { text: "Building project showcase section.", kind: "check" },
-  { text: "Adding skills and expertise section.", kind: "check" },
-  { text: "Implementing contact form functionality.", kind: "check" },
-  { text: "Optimizing images and assets.", kind: "check" },
-  { text: "Setting up animations and transitions.", kind: "check" },
-  { text: "About:", kind: "info" },
-  { text: "Coming Soon", kind: "list" },
-  { text: "Success! Portfolio initialization completed.", kind: "success" },
-  { text: "Launching soon at raam221027.github.io", kind: "url" },
+  { text: "", kind: "blank" },
+  { text: "> raam221027@1.0.0 init:portfolio", kind: "command" },
+  { text: "", kind: "blank" },
+  { text: "[1/6] Initializing Vite + React + TypeScript...", kind: "step" },
+  { text: "[2/6] Resolving dependencies...", kind: "step" },
+  { text: "[3/6] Compiling source...", kind: "step" },
+  { text: "[4/6] Applying Tailwind CSS...", kind: "step" },
+  { text: "[5/6] Building UI components...", kind: "step" },
+  { text: "[6/6] Optimizing assets...", kind: "step" },
+  { text: "", kind: "blank" },
+  { text: "Build complete", kind: "check" },
+  { text: "", kind: "blank" },
+  { text: "Candidate", kind: "info" },
+  { text: "Joemar Questadio", kind: "indent" },
+  { text: "Full Stack Developer", kind: "indent" },
+  { text: "", kind: "blank" },
+  { text: "Frontend Stack", kind: "info" },
+  { text: "React • TypeScript • Vite • Tailwind CSS", kind: "indent" },
+  { text: "", kind: "blank" },
+  { text: "Backend Stack", kind: "info" },
+  { text: "Laravel • PHP", kind: "indent" },
+  { text: "", kind: "blank" },
+  { text: "Databases", kind: "info" },
+  { text: "MySQL • Microsoft SQL Server (MSSQL)", kind: "indent" },
+  { text: "", kind: "blank" },
+  { text: "Done in 2.06s", kind: "success" },
+  { text: "[ready] Serving portfolio at https://raam221027.github.io", kind: "ready" },
 ];
 
 const TYPE_MS = 38;
-const LINE_MS = 200;
-const HOLD_MS = 4500;
+const LINE_MS = 500;
 const PAUSE_AFTER_PROMPT_MS = 420;
 
 type Phase = "typing" | "revealing" | "holding";
@@ -55,12 +77,6 @@ export function TerminalBoot({ className }: { className?: string }) {
       } else {
         timerRef.current = window.setTimeout(() => setPhase("holding"), 400);
       }
-    } else {
-      timerRef.current = window.setTimeout(() => {
-        setTyped(0);
-        setRevealed(0);
-        setPhase("typing");
-      }, HOLD_MS);
     }
 
     return clearTimer;
@@ -78,7 +94,7 @@ export function TerminalBoot({ className }: { className?: string }) {
         <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
         <span className="ml-auto text-[10px] tracking-wide text-fg-dim">
-          — zsh — portfolio
+          — jcq — portfolio
         </span>
       </div>
       <div className="flex-1 overflow-hidden p-4 text-[11px] leading-relaxed sm:text-xs">
@@ -88,10 +104,15 @@ export function TerminalBoot({ className }: { className?: string }) {
           {phase === "typing" && <Caret />}
         </div>
         <ul className="mt-1.5 flex flex-col gap-0.5">
-          {SCRIPT.slice(0, revealed).map((line) => (
-            <li key={line.text}>
+          {SCRIPT.slice(0, revealed).map((line, idx) => (
+            <motion.li
+              key={idx}
+              initial={{ opacity: 0, x: -6 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            >
               <Row line={line} />
-            </li>
+            </motion.li>
           ))}
         </ul>
         {phase === "holding" && (
@@ -106,9 +127,27 @@ export function TerminalBoot({ className }: { className?: string }) {
 
 function Row({ line }: { line: ScriptLine }) {
   switch (line.kind) {
-    case "check":
+    case "blank":
+      return (
+        <span aria-hidden="true" className="block leading-none">
+          &nbsp;
+        </span>
+      );
+    case "command":
+      return <span className="text-fg-dim">{line.text}</span>;
+    case "step": {
+      const tag = line.text.slice(0, 5);
+      const rest = line.text.slice(5);
       return (
         <span className="text-fg-muted">
+          <span className="text-brand-cyan400">{tag}</span>
+          {rest}
+        </span>
+      );
+    }
+    case "check":
+      return (
+        <span className="text-fg">
           <span className="text-success">✔</span> {line.text}
         </span>
       );
@@ -118,27 +157,32 @@ function Row({ line }: { line: ScriptLine }) {
           <span className="text-brand-cyan400">ℹ</span> {line.text}
         </span>
       );
-    case "list":
-      return (
-        <span className="text-fg-muted">
-          <span className="ml-3 text-fg-dim">–</span> {line.text}
-        </span>
-      );
+    case "indent":
+      return <span className="ml-4 text-fg-muted">{line.text}</span>;
     case "success":
       return (
         <span className="text-success">
           <span className="text-success">✓</span> {line.text}
         </span>
       );
-    case "url":
+    case "ready": {
+      const urlIdx = line.text.indexOf("https://");
+      const head = urlIdx >= 0 ? line.text.slice(0, urlIdx) : line.text;
+      const url = urlIdx >= 0 ? line.text.slice(urlIdx) : "";
+      const tagMatch = head.match(/^(\[[^\]]+\])\s*(.*)$/);
+      const tag = tagMatch ? tagMatch[1] : "";
+      const after = tagMatch ? tagMatch[2] : head;
       return (
         <span className="text-fg-muted">
-          Launching soon at{" "}
-          <span className="text-brand-indigo400 underline decoration-dotted underline-offset-4">
-            raam221027.github.io
-          </span>
+          {tag && <span className="text-brand-indigo400">{tag}</span>} {after}
+          {url && (
+            <span className="text-brand-cyan400 underline decoration-dotted underline-offset-4">
+              {url}
+            </span>
+          )}
         </span>
       );
+    }
   }
 }
 
