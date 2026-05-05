@@ -52,10 +52,7 @@ export default function AboutPage() {
         </InfoCard>
         <InfoCard title="Location" accent="success">
           <div className="mb-1 text-base font-semibold text-fg">{profile.location}</div>
-          <div className="text-[13px] leading-relaxed text-fg-muted">
-            Originally from {profile.origin}.
-          </div>
-          <div className="mt-2.5 font-mono text-[11px] text-fg-dim">{profile.timezone}</div>
+          <div className="mt-2.5 font-mono text-[11px] text-fg-dim">{profile.availability}</div>
         </InfoCard>
       </div>
 

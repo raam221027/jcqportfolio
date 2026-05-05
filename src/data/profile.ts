@@ -9,10 +9,9 @@ export const profile = {
   name: "Joemar Questadio",
   title: "Web Developer",
   location: "Strongsville, Ohio",
-  origin: "Cagayan de Oro, Philippines",
-  timezone: "UTC−5 · open to remote",
-  bio: "I'm Joemar, a Full Stack Developer specializing in Laravel, React, and scalable web applications.",
-  bioMore: "BSIT graduate, Programmer of the Year 2024. Currently based in Strongsville, OH.",
+  availability: "Open to remote and on-site opportunities",
+  bio: "Full Stack Developer (Laravel, React) focused on scalable web applications and system integration. Developed an HRMIS with face recognition for attendance and a self-ordering kiosk system.",
+  bioMore: "Programmer of the Year 2024 (BSIT). Open to remote and on-site opportunities..",
   currently: [
     "Building React + Laravel apps",
     "Open to freelance work",
