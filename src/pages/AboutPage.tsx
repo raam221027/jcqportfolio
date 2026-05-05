@@ -61,7 +61,7 @@ export default function AboutPage() {
       </div>
 
       <div className="grid gap-3.5 lg:grid-cols-[1.2fr_1fr]">
-        <InfoCard title="Tech I use" accent="cyan">
+        <InfoCard title="Value I Bring" accent="cyan">
           <div className="flex flex-wrap gap-1.5">
             {skills.map((t) => (
               <Pill key={t}>{t}</Pill>
