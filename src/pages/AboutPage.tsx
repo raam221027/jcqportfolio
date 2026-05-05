@@ -1,8 +1,7 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
 import { TerminalBoot } from "@/components/ui/terminal-boot";
 import InfoCard from "@/components/InfoCard";
-import Pill from "@/components/Pill";
-import { profile, skills } from "@/data/profile";
+import { profile, valueIBring } from "@/data/profile";
 import gradImg from "@/assets/grad_photo.jpg";
 
 export default function AboutPage() {
@@ -62,11 +61,14 @@ export default function AboutPage() {
 
       <div className="grid gap-3.5 lg:grid-cols-[1.2fr_1fr]">
         <InfoCard title="Value I Bring" accent="cyan">
-          <div className="flex flex-wrap gap-1.5">
-            {skills.map((t) => (
-              <Pill key={t}>{t}</Pill>
+          <ul className="flex flex-col gap-2">
+            {valueIBring.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-[13px] text-fg-muted">
+                <span className="font-mono text-brand-cyan400">›</span>
+                {item}
+              </li>
             ))}
-          </div>
+          </ul>
         </InfoCard>
         <InfoCard title="Quick facts" accent="indigo">
           <ul className="flex flex-col gap-1.5 text-[13px] text-fg-muted">

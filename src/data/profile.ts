@@ -1,15 +1,8 @@
-export const skills = [
-  "React",
-  "TypeScript",
-  "TailwindCSS",
-  "Shadcn/ui",
-  "Laravel",
-  "MySQL",
-  "MS SQL",
-  "Docker",
-  "GitHub",
-  "Postman",
-  "VS Code",
+export const valueIBring = [
+  "Build scalable web apps (Laravel + React)",
+  "Integrate hardware with web systems (biometric devices, APIs)",
+  "Design clean backend architecture & databases",
+  "Debug and optimize real-world production issues",
 ];
 
 export const profile = {
