@@ -33,6 +33,7 @@ const SIMPLE_ICON_SLUGS = [
   "php",
   "nodedotjs",
   "vite",
+  "bootstrap",
 ] as const;
 
 const ICON_LINKS: Record<string, string> = {
@@ -46,10 +47,11 @@ const ICON_LINKS: Record<string, string> = {
   git: "https://git-scm.com",
   postman: "https://www.postman.com",
   html5: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-  css3: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  css3: "https://developer.mozilla.org/en-US/docs/Web/!",
   php: "https://www.php.net",
   nodedotjs: "https://nodejs.org",
   vite: "https://vite.dev",
+  bootstrap: "https://getbootstrap.com",
 };
 
 const FALLBACK_HEX = "#e2e8f0";

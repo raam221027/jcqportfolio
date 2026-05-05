@@ -30,6 +30,7 @@ export default function ProjectsPage() {
             {[
               "React",
               "TypeScript",
+              "Vite",
               "Tailwind CSS",
               "shadcn/ui",
               "Laravel",
@@ -38,13 +39,8 @@ export default function ProjectsPage() {
               "Docker",
               "GitHub",
               "Git",
-              "Postman",
-              "VS Code",
-              "HTML5",
-              "CSS3",
               "PHP",
               "Node.js",
-              "Vite",
             ].map((t) => (
               <Pill key={t}>{t}</Pill>
             ))}
