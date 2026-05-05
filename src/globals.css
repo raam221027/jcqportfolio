@@ -27,4 +27,18 @@
     background: linear-gradient(90deg, transparent 10%, hsl(224 76% 48%) 50%, transparent 90%);
     filter: blur(0.5px);
   }
+  .terminal-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(224 18% 30%) transparent;
+  }
+  .terminal-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+  .terminal-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .terminal-scroll::-webkit-scrollbar-thumb {
+    background-color: hsl(224 18% 30%);
+    border-radius: 3px;
+  }
 }

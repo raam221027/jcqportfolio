@@ -69,6 +69,12 @@ export function TerminalBoot({ className }: { className?: string }) {
   const [revealed, setRevealed] = useState(0);
   const [phase, setPhase] = useState<Phase>("typing");
   const timerRef = useRef<number | null>(null);
+  const bodyRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = bodyRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [revealed, phase]);
 
   useEffect(() => {
     const clearTimer = () => {
@@ -117,7 +123,10 @@ export function TerminalBoot({ className }: { className?: string }) {
           — jcq — portfolio
         </span>
       </div>
-      <div className="flex-1 overflow-hidden p-4 text-[11px] leading-relaxed sm:text-xs">
+      <div
+        ref={bodyRef}
+        className="terminal-scroll flex-1 overflow-y-auto overflow-x-hidden p-4 text-[10px] leading-relaxed sm:text-xs"
+      >
         <div className="text-fg">
           <span className="text-brand-cyan400">›</span>{" "}
           <span>{PROMPT.slice(0, typed)}</span>
