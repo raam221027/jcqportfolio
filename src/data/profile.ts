@@ -18,7 +18,9 @@ export const profile = {
     "Learning Docker & system design",
   ],
   facts: [
-    { label: "Role", value: "Web Developer" },
+    { label: "Role", value: "Full Stack Developer" },
+    { label: "Focus", value: "Backend Systems & Integration" },
+    { label: "Stack", value: "Laravel, React, MySQL, API integration, MSSQL" },
     { label: "Award", value: "Programmer of the Year — 2024" },
     { label: "Degree", value: "BS Information Technology" },
     { label: "Hireable", value: "true", success: true },
