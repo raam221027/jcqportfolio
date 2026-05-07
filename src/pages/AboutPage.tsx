@@ -40,7 +40,45 @@ export default function AboutPage() {
           <p className="mb-2 text-sm leading-relaxed text-fg">{profile.bio}</p>
           <p className="text-[13px] leading-relaxed text-fg-muted">{profile.bioMore}</p>
         </InfoCard>
-      
+      <div className="grid gap-3.5 lg:grid-cols-[1.2.0fr_1fr]">
+        <InfoCard title="Value I Bring" accent="cyan">
+          <ul className="flex flex-col gap-2">
+            {valueIBring.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-[13px] text-fg-muted">
+                <span className="font-mono text-brand-cyan400">›</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </InfoCard>
+        
+      </div>
+        
+      </div>
+
+      <div className="grid gap-3.5 sm:grid-cols-3">
+            <InfoCard title="Development Approach" accent="cyan">
+          <ul className="flex flex-col gap-2">
+            {profile.devApproach.map((item) => (
+              <li key={item} className="flex items-start gap-2.5 text-[13px] text-fg-muted">
+                <span className="font-mono text-brand-cyan400">›</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </InfoCard>
+
+        <InfoCard title="Quick facts" accent="indigo">
+          <ul className="flex flex-col gap-1.5 text-[13px] text-fg-muted">
+            {profile.facts.map((f) => (
+              <li key={f.label}>
+                <span className="mr-2 text-fg-dim">{f.label}</span>
+                <span className={f.success ? "text-success" : ""}>{f.value}</span>
+              </li>
+            ))}
+          </ul>
+        </InfoCard>
+
         <InfoCard title="Location" accent="success">
           <div className="mb-1 text-base font-semibold text-fg">{profile.location}</div>
           <div className="flex items-center gap-2 text-sm text-fg-muted">
@@ -77,29 +115,6 @@ export default function AboutPage() {
             <span>{profile.country}</span>
           </div>
           <div className="mt-2.5 font-mono text-[11px] text-fg-dim"></div>
-        </InfoCard>
-      </div>
-
-      <div className="grid gap-3.5 lg:grid-cols-[1.0fr_1fr]">
-        <InfoCard title="Value I Bring" accent="cyan">
-          <ul className="flex flex-col gap-2">
-            {valueIBring.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-[13px] text-fg-muted">
-                <span className="font-mono text-brand-cyan400">›</span>
-                {item}
-              </li>
-            ))}
-          </ul>
-        </InfoCard>
-        <InfoCard title="Quick facts" accent="indigo">
-          <ul className="flex flex-col gap-1.5 text-[13px] text-fg-muted">
-            {profile.facts.map((f) => (
-              <li key={f.label}>
-                <span className="mr-2 text-fg-dim">{f.label}</span>
-                <span className={f.success ? "text-success" : ""}>{f.value}</span>
-              </li>
-            ))}
-          </ul>
         </InfoCard>
       </div>
     </PageShell>
