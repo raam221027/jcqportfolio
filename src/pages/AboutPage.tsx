@@ -1,8 +1,8 @@
 import PageShell, { PageHeader } from "@/components/PageShell";
 import { TerminalBoot } from "@/components/ui/terminal-boot";
 import InfoCard from "@/components/InfoCard";
+import ThemedAvatar from "@/components/ThemedAvatar";
 import { profile, valueIBring } from "@/data/profile";
-import gradImg from "@/assets/grad_photo.jpg";
 
 export default function AboutPage() {
   return (
@@ -18,20 +18,7 @@ export default function AboutPage() {
       />
 
       <div className="mb-10 grid items-center justify-items-center gap-6 sm:grid-cols-2 ">
-        <div className="relative flex aspect-square w-full max-w-[500px] items-center justify-center overflow-hidden rounded-2xl border border-surface-2 bg-bg-elevated">
-          <img
-            src={gradImg}
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl opacity-60"
-          />
-          <span className="absolute inset-0 bg-bg/420" />
-          <img
-            src={gradImg}
-            alt="Graduation photo"
-            className="relative h-full w-full object-contain"
-          />
-        </div>
+        <ThemedAvatar />
         <TerminalBoot className="aspect-square h-full max-h-[500px] w-full max-w-[500px]" />
       </div>
 
