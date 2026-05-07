@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -15,35 +15,42 @@ type ScriptLine = { text: string; kind: LineKind };
 
 const PROMPT = "npm run init:portfolio";
 
-const SCRIPT: ScriptLine[] = [
-  { text: "", kind: "blank" },
-  { text: "> raam221027@1.0.0 init:portfolio", kind: "command" },
-  { text: "", kind: "blank" },
-  { text: "[1/6] Initializing Vite + React + TypeScript...", kind: "step" },
-  { text: "[2/6] Resolving dependencies...", kind: "step" },
-  { text: "[3/6] Compiling source...", kind: "step" },
-  { text: "[4/6] Applying Tailwind CSS...", kind: "step" },
-  { text: "[5/6] Building UI components...", kind: "step" },
-  { text: "[6/6] Optimizing assets...", kind: "step" },
-  { text: "", kind: "blank" },
-  { text: "Build complete", kind: "check" },
-  { text: "", kind: "blank" },
-  { text: "Candidate", kind: "info" },
-  { text: "Joemar Questadio", kind: "indent" },
-  { text: "Full Stack Developer", kind: "indent" },
-  { text: "", kind: "blank" },
-  { text: "Frontend Stack", kind: "info" },
-  { text: "React • TypeScript • Vite • Tailwind CSS", kind: "indent" },
-  { text: "", kind: "blank" },
-  { text: "Backend Stack", kind: "info" },
-  { text: "Laravel • PHP", kind: "indent" },
-  { text: "", kind: "blank" },
-  { text: "Databases", kind: "info" },
-  { text: "MySQL • Microsoft SQL Server (MSSQL)", kind: "indent" },
-  { text: "", kind: "blank" },
-  { text: "Done in 2.06s", kind: "success" },
-  { text: "[ready] Serving portfolio at https://raam221027.github.io", kind: "ready" },
-];
+function randomDoneSeconds(): string {
+  const seconds = 1.2 + Math.random() * 1.4;
+  return seconds.toFixed(2);
+}
+
+function buildScript(doneSeconds: string): ScriptLine[] {
+  return [
+    { text: "", kind: "blank" },
+    { text: "> raam221027@1.0.0 init:portfolio", kind: "command" },
+    { text: "", kind: "blank" },
+    { text: "[1/6] Initializing Vite + React + TypeScript...", kind: "step" },
+    { text: "[2/6] Resolving dependencies...", kind: "step" },
+    { text: "[3/6] Compiling source...", kind: "step" },
+    { text: "[4/6] Applying Tailwind CSS...", kind: "step" },
+    { text: "[5/6] Building UI components...", kind: "step" },
+    { text: "[6/6] Optimizing assets...", kind: "step" },
+    { text: "", kind: "blank" },
+    { text: "Build complete", kind: "check" },
+    { text: "", kind: "blank" },
+    { text: "Candidate", kind: "info" },
+    { text: "Joemar Questadio", kind: "indent" },
+    { text: "Full Stack Developer", kind: "indent" },
+    { text: "", kind: "blank" },
+    { text: "Frontend Stack", kind: "info" },
+    { text: "React • TypeScript • Vite • Tailwind CSS", kind: "indent" },
+    { text: "", kind: "blank" },
+    { text: "Backend Stack", kind: "info" },
+    { text: "Laravel • PHP", kind: "indent" },
+    { text: "", kind: "blank" },
+    { text: "Databases", kind: "info" },
+    { text: "MySQL • Microsoft SQL Server (MSSQL)", kind: "indent" },
+    { text: "", kind: "blank" },
+    { text: `Done in ${doneSeconds}s`, kind: "success" },
+    { text: "[ready] Serving portfolio at https://raam221027.github.io", kind: "ready" },
+  ];
+}
 
 const PAUSE_AFTER_RUN_MS = 1000;
 const PAUSE_AFTER_PROMPT_MS = 420;
@@ -52,7 +59,6 @@ const LINE_MS = 500;
 const LINE_MS_FAST = 100;
 
 const RUN_END = "npm run".length;
-const BUILD_COMPLETE_INDEX = SCRIPT.findIndex((l) => l.text === "Build complete");
 
 function nextTypeDelay(charIndex: number): number {
   const ch = PROMPT[charIndex - 1];
@@ -65,6 +71,11 @@ function nextTypeDelay(charIndex: number): number {
 type Phase = "typing" | "revealing" | "holding";
 
 export function TerminalBoot({ className }: { className?: string }) {
+  const script = useMemo(() => buildScript(randomDoneSeconds()), []);
+  const buildCompleteIndex = useMemo(
+    () => script.findIndex((l) => l.text === "Build complete"),
+    [script],
+  );
   const [typed, setTyped] = useState(0);
   const [revealed, setRevealed] = useState(0);
   const [phase, setPhase] = useState<Phase>("typing");
@@ -92,11 +103,11 @@ export function TerminalBoot({ className }: { className?: string }) {
         timerRef.current = window.setTimeout(() => setPhase("revealing"), PAUSE_AFTER_PROMPT_MS);
       }
     } else if (phase === "revealing") {
-      if (revealed < SCRIPT.length) {
+      if (revealed < script.length) {
         const lineDelay =
-          revealed === BUILD_COMPLETE_INDEX + 1
+          revealed === buildCompleteIndex + 1
             ? PAUSE_AFTER_BUILD_MS
-            : revealed > BUILD_COMPLETE_INDEX
+            : revealed > buildCompleteIndex
               ? LINE_MS_FAST
               : LINE_MS;
         timerRef.current = window.setTimeout(() => setRevealed((n) => n + 1), lineDelay);
@@ -106,7 +117,7 @@ export function TerminalBoot({ className }: { className?: string }) {
     }
 
     return clearTimer;
-  }, [phase, typed, revealed]);
+  }, [phase, typed, revealed, script, buildCompleteIndex]);
 
   return (
     <div
@@ -133,7 +144,7 @@ export function TerminalBoot({ className }: { className?: string }) {
           {phase === "typing" && <Caret />}
         </div>
         <ul className="mt-1.5 flex flex-col gap-0.5">
-          {SCRIPT.slice(0, revealed).map((line, idx) => (
+          {script.slice(0, revealed).map((line, idx) => (
             <motion.li
               key={idx}
               initial={{ opacity: 0, x: -6 }}
