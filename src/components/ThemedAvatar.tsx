@@ -11,7 +11,7 @@ const FRAMES = [f1, f2, f3, f4, f5];
 const LIGHT_PATH = [0, 1, 2, 3, 4];
 const DARK_PATH = [4, 3, 2, 0];
 const FRAME_MS = 220;
-const F2_HOLD_MS = 2500;
+const F2_HOLD_MS = 1000;
 
 export default function ThemedAvatar({ className }: { className?: string }) {
   const { resolvedTheme } = useTheme();
