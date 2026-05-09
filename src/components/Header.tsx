@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { Search, Sun, Moon, Menu, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Search, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import ThemeSwitch from "./ThemeSwitch";
 
 const NAV = [
   { to: "/about", label: "About" },
@@ -14,7 +14,6 @@ const NAV = [
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -89,14 +88,7 @@ export default function Header() {
               className="w-32 bg-transparent text-sm text-fg outline-none placeholder:text-fg-dim"
             />
           </form>
-          <button
-            type="button"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="rounded-md border border-surface-2 bg-surface-1/50 p-2 text-fg-muted transition-colors hover:text-fg"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-          </button>
+          <ThemeSwitch />
           <button
             type="button"
             onClick={() => setMenuOpen((v) => !v)}

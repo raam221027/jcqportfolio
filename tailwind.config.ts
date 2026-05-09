@@ -6,20 +6,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        // JQ brand tokens — sourced from colors_and_type.css
+        // JQ brand tokens — values live as CSS variables in globals.css
+        // (so .dark / .light on <html> can swap palettes).
         bg: {
-          DEFAULT: "hsl(222 47% 11%)",
-          elevated: "hsl(222 47% 13%)",
-          deep: "hsl(224 60% 6%)",
+          DEFAULT: "hsl(var(--bg) / <alpha-value>)",
+          elevated: "hsl(var(--bg-elevated) / <alpha-value>)",
+          deep: "hsl(var(--bg-deep) / <alpha-value>)",
         },
         surface: {
-          1: "hsl(215 27% 16%)",
-          2: "hsl(215 27% 18%)",
+          1: "hsl(var(--surface-1) / <alpha-value>)",
+          2: "hsl(var(--surface-2) / <alpha-value>)",
         },
         fg: {
-          DEFAULT: "hsl(210 40% 98%)",
-          muted: "hsl(217 19% 65%)",
-          dim: "hsl(217 15% 50%)",
+          DEFAULT: "hsl(var(--fg) / <alpha-value>)",
+          muted: "hsl(var(--fg-muted) / <alpha-value>)",
+          dim: "hsl(var(--fg-dim) / <alpha-value>)",
         },
         brand: {
           cyan: "hsl(190 95% 39%)",
@@ -32,8 +33,8 @@ export default {
         warning: "#eab308",
         danger: "hsl(0 72% 51%)",
         border: {
-          DEFAULT: "hsl(215 27% 18%)",
-          hover: "hsl(215 27% 28%)",
+          DEFAULT: "hsl(var(--border) / <alpha-value>)",
+          hover: "hsl(var(--border-hover) / <alpha-value>)",
         },
       },
       fontFamily: {
