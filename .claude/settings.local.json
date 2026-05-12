@@ -3,7 +3,8 @@
     "allow": [
       "Bash(npm install *)",
       "Bash(npx tsc *)",
-      "Bash(curl -s \"https://raw.githubusercontent.com/simple-icons/simple-icons/14.0.0/_data/simple-icons.json\")"
+      "Bash(curl -s \"https://raw.githubusercontent.com/simple-icons/simple-icons/14.0.0/_data/simple-icons.json\")",
+      "Bash(npm run *)"
     ]
   }
 }
