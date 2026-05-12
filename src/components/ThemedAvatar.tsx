@@ -71,7 +71,7 @@ export default function ThemedAvatar({ className }: { className?: string }) {
         src={f1}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl"
+        className="absolute inset-0 h-full w-full scale-0 object-cover opacity-60 blur-2xl"
       />
       <span className="absolute inset-0 bg-bg/420" />
 
