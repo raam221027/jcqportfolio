@@ -60,6 +60,9 @@ export default function ThemedAvatar({ className }: { className?: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resolvedTheme, mounted]);
 
+  const isLight = mounted && resolvedTheme === "light";
+  const inF1F2Phase = isLight && frame <= 1;
+
   return (
     <div
       className={cn(
@@ -89,7 +92,12 @@ export default function ThemedAvatar({ className }: { className?: string }) {
             }}
             className={cn(
               "absolute inset-0 h-full w-full object-contain object-center",
-              idx === frame ? "opacity-100 blur-0" : "opacity-0 blur-[6px]",
+              idx === frame || (inF1F2Phase && idx === 0)
+                ? "opacity-100"
+                : "opacity-0",
+              idx === frame || (inF1F2Phase && idx <= 1)
+                ? "blur-0"
+                : "blur-[6px]",
             )}
           />
         ))}
