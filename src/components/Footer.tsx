@@ -1,8 +1,8 @@
 import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 
 const SOCIALS = [
-  { href: "https://facebook.com", label: "Facebook", Icon: Facebook },
-  { href: "https://github.com", label: "GitHub", Icon: Github },
+  { href: "https://www.facebook.com/raam221027", label: "Facebook", Icon: Facebook },
+  { href: "https://github.com/raam221027", label: "GitHub", Icon: Github },
   { href: "https://linkedin.com", label: "LinkedIn", Icon: Linkedin },
   { href: "https://instagram.com", label: "Instagram", Icon: Instagram },
 ];
