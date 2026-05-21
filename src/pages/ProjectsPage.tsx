@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import PageShell, { PageHeader } from "@/components/PageShell";
 import Pill from "@/components/Pill";
 import TechStackSphere from "@/components/TechStackSphere";
@@ -9,6 +11,22 @@ const VARIANT_FOR: Record<string, "success" | "indigo" | "cyan"> = {
 };
 
 export default function ProjectsPage() {
+  const [lightbox, setLightbox] = useState<{ src: string; alt: string } | null>(null);
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+    };
+    window.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [lightbox]);
+
   return (
     <PageShell className="mx-auto max-w-5xl">
       <PageHeader eyebrow="Projects" title="Selected work" />
@@ -58,18 +76,27 @@ export default function ProjectsPage() {
             key={p.title}
             className="group rounded-xl border border-surface-2 bg-bg-elevated p-5 shadow-md transition-all duration-200 ease-out-quart hover:-translate-y-0.5 hover:border-brand-cyan/50"
           >
-            <div className="mb-4 flex h-52 items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
-              {p.image ? (
+            {p.image ? (
+              <button
+                type="button"
+                onClick={() =>
+                  setLightbox({ src: p.image!, alt: `${p.title} screenshot` })
+                }
+                aria-label={`View ${p.title} screenshot in full size`}
+                className="mb-4 flex h-52 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 transition-opacity hover:opacity-90"
+              >
                 <img
                   src={p.image}
                   alt={`${p.title} screenshot`}
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
-              ) : (
-                "screenshot"
-              )}
-            </div>
+              </button>
+            ) : (
+              <div className="mb-4 flex h-52 items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
+                screenshot
+              </div>
+            )}
             <div className="mb-2 flex items-center justify-between gap-2">
               <h3 className="text-lg font-semibold">{p.title}</h3>
               <Pill variant={VARIANT_FOR[p.status]}>{p.status}</Pill>
@@ -83,6 +110,42 @@ export default function ProjectsPage() {
           </article>
         ))}
       </div>
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            key="lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setLightbox(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={lightbox.alt}
+            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
+          >
+            <motion.img
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+              src={lightbox.src}
+              alt={lightbox.alt}
+              onClick={(e) => e.stopPropagation()}
+              className="max-h-[92vh] max-w-[95vw] cursor-default rounded-lg object-contain shadow-2xl"
+            />
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Close image"
+              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-xl leading-none text-white transition-colors hover:border-white/40 hover:bg-black/60"
+            >
+              ×
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageShell>
   );
 }
