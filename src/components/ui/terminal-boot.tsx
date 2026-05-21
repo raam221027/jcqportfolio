@@ -48,7 +48,7 @@ function buildScript(doneSeconds: string): ScriptLine[] {
     { text: "MySQL • Microsoft SQL Server (MSSQL)", kind: "indent" },
     { text: "", kind: "blank" },
     { text: `Done in ${doneSeconds}s`, kind: "success" },
-    { text: "[ready] Serving portfolio at https://raam221027.github.io", kind: "ready" },
+    { text: "[ready] Serving portfolio at https://jcqportfolio.vercel.app/", kind: "ready" },
   ];
 }
 
@@ -216,9 +216,14 @@ function Row({ line }: { line: ScriptLine }) {
         <span className="text-fg-muted">
           {tag && <span className="text-brand-indigo400">{tag}</span>} {after}
           {url && (
-            <span className="text-brand-cyan400 underline decoration-dotted underline-offset-4">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-cyan400 underline decoration-dotted underline-offset-4 transition-colors hover:text-brand-cyan"
+            >
               {url}
-            </span>
+            </a>
           )}
         </span>
       );
