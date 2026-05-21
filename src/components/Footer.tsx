@@ -9,8 +9,8 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-surface-1 px-6 py-3">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
+    <footer className="border-t border-surface-1 px-4 py-4 sm:px-6 sm:py-3">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row sm:gap-6">
         <p className="text-sm text-fg-muted">&copy; 2026 JQ. All rights reserved.</p>
         <div className="flex items-center gap-2">
           {SOCIALS.map(({ href, label, Icon }) => (

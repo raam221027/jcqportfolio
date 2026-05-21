@@ -49,15 +49,15 @@ export default function Header() {
         headerBgClass,
       ].join(" ")}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 md:grid md:grid-cols-[1fr_auto_1fr]">
         <Link
           to="/"
-          className="rounded-md bg-gray-800 px-2 py-1 font-display text-2xl font-bold leading-none text-white hover:bg-gray-700"
+          className="justify-self-start rounded-md bg-gray-800 px-2 py-1 font-display text-2xl font-bold leading-none text-white hover:bg-gray-700"
         >
           Portfolio.
         </Link>
 
-        <nav className="hidden items-center gap-5 md:flex lg:gap-6">
+        <nav className="hidden items-center justify-center gap-5 md:flex lg:gap-6">
           {NAV.map((it) => (
             <NavLink
               key={it.to}
@@ -76,7 +76,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center justify-self-end gap-2">
           <ThemeSwitch />
           <button
             type="button"

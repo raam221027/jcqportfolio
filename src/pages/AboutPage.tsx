@@ -27,7 +27,7 @@ export default function AboutPage() {
           <p className="mb-2 text-sm leading-relaxed text-fg">{profile.bio}</p>
           <p className="text-[13px] leading-relaxed text-fg-muted">{profile.bioMore}</p>
         </InfoCard>
-      <div className="grid gap-3.5 lg:grid-cols-[1.2.0fr_1fr]">
+      <div className="grid gap-3.5 lg:grid-cols-[1.2fr_1fr]">
         <InfoCard title="Value I Bring" accent="cyan">
           <ul className="flex flex-col gap-2">
             {valueIBring.map((item) => (
@@ -43,7 +43,7 @@ export default function AboutPage() {
         
       </div>
 
-      <div className="grid gap-3.5 sm:grid-cols-3">
+      <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
             <InfoCard title="Development Approach" accent="cyan">
           <ul className="flex flex-col gap-2">
             {profile.devApproach.map((item) => (

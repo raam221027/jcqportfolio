@@ -62,7 +62,7 @@ export default function ProjectsPage() {
             ))}
           </div>
         </div>
-        <div className="order-1 flex justify-center lg:order-2 lg:justify-end">
+        <div className="order-1 flex justify-center overflow-hidden lg:order-2 lg:justify-end">
           <TechStackSphere radius={180} speed={0.03} hoverSpeed={0.03} />
         </div>
       </section>

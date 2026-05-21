@@ -8,18 +8,18 @@ export default function Hero() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="relative flex min-h-[calc(100vh-60px)] items-center justify-center overflow-hidden px-6"
+      className="relative flex min-h-[calc(100vh-60px)] items-center justify-center overflow-hidden px-4 sm:px-6"
     >
-      <div className="relative z-10 mx-auto max-w-1xl text-center">
-        <h1 className="font-display text-5xl font-bold leading-[1.05] tracking-tight text-fg sm:text-6xl md:text-7xl">
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
+        <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-fg sm:text-5xl md:text-6xl lg:text-7xl">
           Hi, I'm <span className="gradient-text">Joemar Questadio</span>
         </h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
+        <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-fg-muted sm:mt-6 sm:text-lg">
           A passionate Web Developer focused on clean, user-friendly interfaces and seamless system
           integrations.
         </p>
 
-        <div className="mt-10 flex justify-center gap-3">
+        <div className="mt-8 flex flex-wrap justify-center gap-3 sm:mt-10">
           <Link
             to="/projects"
             className="rounded-lg bg-brand-cyan px-5 py-2.5 text-sm font-semibold text-[#031218] transition-shadow hover:shadow-glow-cyan"

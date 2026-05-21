@@ -132,7 +132,7 @@ export default function ContactPage() {
         />
 
         {RECAPTCHA_SITE_KEY ? (
-          <div className="mt-1">
+          <div className="mt-1 -mx-1 overflow-x-auto">
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey={RECAPTCHA_SITE_KEY}
