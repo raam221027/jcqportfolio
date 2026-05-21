@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { useTheme } from "next-themes";
 import DotPattern from "@/components/DotPattern";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -11,9 +12,10 @@ import ContactPage from "@/pages/ContactPage";
 
 export default function App() {
   const location = useLocation();
+  const { resolvedTheme } = useTheme();
   return (
     <>
-      <DotPattern />
+      {resolvedTheme !== "light" && <DotPattern />}
       <div className="relative z-10">
         <Header />
         <AnimatePresence mode="wait">

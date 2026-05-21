@@ -1,7 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { useTheme } from "next-themes";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+type DocWithViewTransition = Document & {
+  startViewTransition?: (cb: () => void) => {
+    ready: Promise<void>;
+    finished: Promise<void>;
+  };
+};
 
 export default function ThemeSwitch({ className }: { className?: string }) {
   const { resolvedTheme, setTheme } = useTheme();
@@ -11,13 +18,58 @@ export default function ThemeSwitch({ className }: { className?: string }) {
 
   const isDark = mounted ? resolvedTheme === "dark" : true;
 
+  const handleToggle = (e: MouseEvent<HTMLButtonElement>) => {
+    const next = isDark ? "light" : "dark";
+    const doc = document as DocWithViewTransition;
+
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (!doc.startViewTransition || prefersReduced) {
+      setTheme(next);
+      return;
+    }
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+    const endRadius = Math.hypot(
+      Math.max(x, window.innerWidth - x),
+      Math.max(y, window.innerHeight - y),
+    );
+
+    const isReverse = next === "dark";
+    const root = document.documentElement;
+    if (isReverse) root.classList.add("theme-transition-reverse");
+
+    const transition = doc.startViewTransition(() => setTheme(next));
+    transition.ready.then(() => {
+      const small = `circle(0px at ${x}px ${y}px)`;
+      const large = `circle(${endRadius}px at ${x}px ${y}px)`;
+      root.animate(
+        { clipPath: isReverse ? [large, small] : [small, large] },
+        {
+          duration: 550,
+          easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          pseudoElement: isReverse
+            ? "::view-transition-old(root)"
+            : "::view-transition-new(root)",
+        },
+      );
+    });
+    transition.finished.finally(() => {
+      root.classList.remove("theme-transition-reverse");
+    });
+  };
+
   return (
     <button
       type="button"
       role="switch"
       aria-checked={isDark}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      onClick={() => setTheme(isDark ? "light" : "dark")}
+      onClick={handleToggle}
       className={cn(
         "relative h-8 w-[64px] shrink-0 overflow-hidden rounded-full border transition-colors duration-500",
         isDark

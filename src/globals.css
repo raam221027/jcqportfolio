@@ -47,6 +47,29 @@
   }
 }
 
+/* Telegram-style circular reveal for theme switch (View Transitions API).
+   The default cross-fade is replaced by a clip-path circle expanding from the
+   toggle's click point — see ThemeSwitch.tsx for the JS that drives it. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 9999;
+}
+/* Reverse direction (light → dark): the OLD light layer sits on top and
+   shrinks back into the toggle, revealing the new dark layer underneath. */
+html.theme-transition-reverse::view-transition-old(root) {
+  z-index: 9999;
+}
+html.theme-transition-reverse::view-transition-new(root) {
+  z-index: 1;
+}
+
 @layer utilities {
   .gradient-text {
     @apply bg-gradient-to-r from-brand-cyan400 to-brand-indigo400 bg-clip-text text-transparent;

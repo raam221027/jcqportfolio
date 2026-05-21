@@ -52,7 +52,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3">
         <Link
           to="/"
-          className="rounded-md bg-gray-800 px-2 py-1 font-display text-2xl font-bold leading-none text-fg hover:bg-gray-700"
+          className="rounded-md bg-gray-800 px-2 py-1 font-display text-2xl font-bold leading-none text-white hover:bg-gray-700"
         >
           Portfolio.
         </Link>
