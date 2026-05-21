@@ -3,10 +3,9 @@ import Pill from "@/components/Pill";
 import TechStackSphere from "@/components/TechStackSphere";
 import { projects, type ProjectStatus } from "@/data/projects";
 
-const VARIANT_FOR: Record<ProjectStatus, "success" | "indigo" | "cyan"> = {
-  Shipped: "success",
-  Featured: "indigo",
-  Available: "cyan",
+const VARIANT_FOR: Record<string, "success" | "indigo" | "cyan"> = {
+  "Capstone Project": "success",
+  "Internship Project": "indigo",
 };
 
 export default function ProjectsPage() {
@@ -54,14 +53,23 @@ export default function ProjectsPage() {
       <div className="mb-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-fg-muted">
         Projects
       </div>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
         {projects.map((p) => (
           <article
             key={p.title}
             className="group rounded-xl border border-surface-2 bg-bg-elevated p-5 shadow-md transition-all duration-200 ease-out-quart hover:-translate-y-0.5 hover:border-brand-cyan/50"
           >
-            <div className="mb-4 flex h-32 items-center justify-center rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
-              screenshot
+            <div className="mb-4 flex h-48 items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
+              {p.image ? (
+                <img
+                  src={p.image}
+                  alt={`${p.title} screenshot`}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              ) : (
+                "screenshot"
+              )}
             </div>
             <div className="mb-2 flex items-center justify-between gap-2">
               <h3 className="text-lg font-semibold">{p.title}</h3>

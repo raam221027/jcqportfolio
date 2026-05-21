@@ -1,29 +1,27 @@
-export type ProjectStatus = "Shipped" | "Featured" | "Available";
+import hrmisImg from "@/assets/HRMIS.png";
+export type ProjectStatus = "Shipped" | "Featured" | "Available" | "Capstone Project" | "Internship Project";
 
 export interface Project {
   title: string;
   desc: string;
   tags: string[];
   status: ProjectStatus;
+  image?: string;
 }
 
 export const projects: Project[] = [
   {
     title: "Healthy Self Kiosk",
     desc: "Self-ordering food kiosk with touch-first UX, real-time orders, and a Laravel-backed admin panel.",
-    tags: ["Laravel", "React", "MySQL"],
-    status: "Shipped",
+    tags: ["Laravel", "MySQL"],
+    status: "Capstone Project",
   },
   {
-    title: "Always Coffee",
-    desc: "Membership and POS web app for a local coffee shop, with QR-code loyalty and daily reports.",
-    tags: ["React", "TypeScript", "Tailwind"],
-    status: "Featured",
+    title: "HRMIS - DTR System",
+    desc: "A Human Resource Management Information System with face recognition for attendance tracking, employee records management, and payroll processing. Developed during my internship at Department of Information and Communications Technology in collaboration with another developer.",
+    tags: ["Laravel", "MS SQL Server"],
+    status: "Internship Project",
+    image: hrmisImg,
   },
-  {
-    title: "Portfolio v2",
-    desc: "This site. React 19, Vite, Tailwind v4, Aceternity-style components, custom dot-pattern background.",
-    tags: ["React", "Vite", "Framer Motion"],
-    status: "Available",
-  },
+
 ];
