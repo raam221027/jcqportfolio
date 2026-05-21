@@ -3,13 +3,14 @@ export interface Certificate {
   year: string;
 }
 
-export const award = {
-  name: "Programmer of the Year — 2024",
-  eyebrow: "Award",
+export const recognition = {
+  name: "Programmer of the Year",
+  year: "2024",
+  eyebrow: "Recognition",
 };
 
 export const certificates: Certificate[] = [
-  { name: "Internship — 2024", year: "2024" },
+  { name: "Department of Information and Communication Technology (Internship)", year: "2024" },
   { name: "Capacity Building Training", year: "2024" },
   { name: "Introduction to QA Software Testing", year: "2023" },
   { name: "System Testing and Evaluation", year: "2023" },
