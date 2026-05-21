@@ -110,7 +110,7 @@ export default function Header() {
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     [
-                      "rounded-md px-3 py-2.5 text-sm transition-colors",
+                      "rounded-md px-3 py-2.5 text-center text-sm transition-colors",
                       isActive
                         ? "bg-surface-1 font-semibold text-fg"
                         : "font-normal text-fg-muted hover:bg-surface-1/60 hover:text-fg",
