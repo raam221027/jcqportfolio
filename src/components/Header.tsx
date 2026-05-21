@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeSwitch from "./ThemeSwitch";
 
@@ -77,17 +77,6 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="hidden items-center gap-2 rounded-md border border-surface-2 bg-surface-1/50 px-3 py-1.5 lg:flex"
-          >
-            <Search className="h-4 w-4 text-fg-dim" />
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-32 bg-transparent text-sm text-fg outline-none placeholder:text-fg-dim"
-            />
-          </form>
           <ThemeSwitch />
           <button
             type="button"
@@ -131,17 +120,6 @@ export default function Header() {
                   {it.label}
                 </NavLink>
               ))}
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="mt-2 flex items-center gap-2 rounded-md border border-surface-2 bg-surface-1/50 px-3 py-2 lg:hidden"
-              >
-                <Search className="h-4 w-4 text-fg-dim" />
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="w-full bg-transparent text-sm text-fg outline-none placeholder:text-fg-dim"
-                />
-              </form>
             </nav>
           </motion.div>
         )}

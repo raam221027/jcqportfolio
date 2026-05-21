@@ -88,7 +88,7 @@ export default function ProjectsPage() {
                 <img
                   src={p.image}
                   alt={`${p.title} screenshot`}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain sm:object-cover"
                   loading="lazy"
                 />
               </button>
