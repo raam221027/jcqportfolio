@@ -1,4 +1,5 @@
 import hrmisImg from "@/assets/HRMIS.png";
+import healthySelfImg from "@/assets/HealthySelf.png";
 export type ProjectStatus = "Shipped" | "Featured" | "Available" | "Capstone Project" | "Internship Project";
 
 export interface Project {
@@ -11,13 +12,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Healthy Self Kiosk",
-    desc: "Self-ordering food kiosk with touch-first UX, real-time orders, and a Laravel-backed admin panel.",
+    title: "Food Kiosk Self-Ordering System",
+    desc: "A self-ordering system with real-time order processing and centralized menu management, designed to improve ordering efficiency and enhance the customer experience.",
     tags: ["Laravel", "MySQL"],
     status: "Capstone Project",
+    image: healthySelfImg,
   },
   {
-    title: "HRMIS - DTR System",
+    title: "HRMIS",
     desc: "A Human Resource Management Information System with face recognition for attendance tracking, employee records management, and payroll processing. Developed during my internship at Department of Information and Communications Technology in collaboration with another developer.",
     tags: ["Laravel", "MS SQL Server"],
     status: "Internship Project",

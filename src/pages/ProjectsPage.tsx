@@ -22,8 +22,7 @@ export default function ProjectsPage() {
             <span className="gradient-text">Tools</span> that ship these projects
           </h3>
           <p className="mx-auto mb-6 max-w-md text-sm leading-relaxed text-fg-muted sm:text-base lg:mx-0">
-            A 3D orbit of the libraries, languages, and platforms behind every project below. Drag
-            or hover to spin — the sphere accelerates as your cursor approaches the edge.
+           Technologies and development tools I use to build modern, scalable, and user-focused web applications, including frontend interfaces, backend systems, databases, and system integrations.
           </p>
           <div className="flex flex-wrap justify-center gap-1.5 lg:justify-start">
             {[
@@ -59,7 +58,7 @@ export default function ProjectsPage() {
             key={p.title}
             className="group rounded-xl border border-surface-2 bg-bg-elevated p-5 shadow-md transition-all duration-200 ease-out-quart hover:-translate-y-0.5 hover:border-brand-cyan/50"
           >
-            <div className="mb-4 flex h-48 items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
+            <div className="mb-4 flex h-52 items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
               {p.image ? (
                 <img
                   src={p.image}
