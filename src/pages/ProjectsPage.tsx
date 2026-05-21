@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import PageShell, { PageHeader } from "@/components/PageShell";
 import Pill from "@/components/Pill";
 import TechStackSphere from "@/components/TechStackSphere";
-import { projects, type ProjectStatus } from "@/data/projects";
+import { projects } from "@/data/projects";
 
 const VARIANT_FOR: Record<string, "success" | "indigo" | "cyan"> = {
   "Capstone Project": "success",
