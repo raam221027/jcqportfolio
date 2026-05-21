@@ -1,5 +1,5 @@
 import hrmisImg from "@/assets/HRMIS.png";
-import healthySelfImg from "@/assets/HealthySelf.png";
+import healthySelfImg from "@/assets/Healthyself.png";
 export type ProjectStatus = "Shipped" | "Featured" | "Available" | "Capstone Project" | "Internship Project";
 
 export interface Project {
