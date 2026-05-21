@@ -52,6 +52,7 @@ export default function ThemeSwitch({ className }: { className?: string }) {
         {
           duration: 550,
           easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+          fill: "forwards",
           pseudoElement: isReverse
             ? "::view-transition-old(root)"
             : "::view-transition-new(root)",
