@@ -13,7 +13,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Food Kiosk Self-Ordering System",
-    desc: "A self-ordering system with real-time order processing and centralized menu management, designed to improve ordering efficiency and enhance the customer experience.",
+    desc: "A Food Kiosk Self-Ordering System with real-time order processing and centralized menu management, designed to improve ordering efficiency and enhance the customer experience.",
     tags: ["Laravel", "MySQL"],
     status: "Capstone Project",
     image: healthySelfImg,

@@ -22,12 +22,11 @@ export default function AboutPage() {
         <TerminalBoot className="aspect-square h-full max-h-[500px] w-full max-w-[500px]" />
       </div>
 
-      <div className="mb-3.5 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-2">
+      <div className="mb-3.5 grid gap-3.5 sm:grid-cols-2">
         <InfoCard title="Bio" accent="cyan">
           <p className="mb-2 text-sm leading-relaxed text-fg">{profile.bio}</p>
           <p className="text-[13px] leading-relaxed text-fg-muted">{profile.bioMore}</p>
         </InfoCard>
-      <div className="grid gap-3.5 lg:grid-cols-[1.2fr_1fr]">
         <InfoCard title="Value I Bring" accent="cyan">
           <ul className="flex flex-col gap-2">
             {valueIBring.map((item) => (
@@ -38,9 +37,6 @@ export default function AboutPage() {
             ))}
           </ul>
         </InfoCard>
-        
-      </div>
-        
       </div>
 
       <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
