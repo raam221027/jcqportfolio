@@ -16,7 +16,7 @@ export default function Hero() {
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-fg-muted sm:mt-6 sm:text-lg">
           A passionate Full Stack Developer focused on clean, user-friendly interfaces and seamless system
-          cdintegrations.
+          integrations.
         </p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-3 sm:mt-10">
