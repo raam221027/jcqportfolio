@@ -28,7 +28,7 @@ export default function ProjectsPage() {
   }, [lightbox]);
 
   return (
-    <PageShell id="projects" className="mx-auto max-w-5xl">
+    <PageShell id="projects" nextId="certificates" className="mx-auto max-w-5xl">
       <PageHeader eyebrow="Projects" title="Selected work" />
 
       <section className="mb-12 grid items-center gap-8 sm:mb-16 sm:gap-10 lg:grid-cols-2">

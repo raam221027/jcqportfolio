@@ -1,13 +1,15 @@
 import type { ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import SectionScrollIndicator from "./SectionScrollIndicator";
 
 interface PageShellProps {
   id: string;
   children: ReactNode;
   className?: string;
+  nextId?: string;
 }
 
-export default function PageShell({ id, children, className = "" }: PageShellProps) {
+export default function PageShell({ id, children, className = "", nextId }: PageShellProps) {
   const reduce = useReducedMotion();
   const motionProps = reduce
     ? {}
@@ -28,6 +30,7 @@ export default function PageShell({ id, children, className = "" }: PageShellPro
       ].join(" ")}
     >
       {children}
+      {nextId ? <SectionScrollIndicator targetId={nextId} /> : null}
     </motion.section>
   );
 }

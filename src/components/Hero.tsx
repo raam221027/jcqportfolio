@@ -1,3 +1,5 @@
+import SectionScrollIndicator from "./SectionScrollIndicator";
+
 export default function Hero() {
   return (
     <section
@@ -31,6 +33,8 @@ export default function Hero() {
         <div className="relative mx-auto mt-14 h-px w-3/5">
           <div className="absolute inset-0 glow-beam" />
         </div>
+
+        <SectionScrollIndicator targetId="about" />
       </div>
     </section>
   );

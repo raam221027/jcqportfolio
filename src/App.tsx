@@ -3,6 +3,7 @@ import DotPattern from "@/components/DotPattern";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import ScrollToTop from "@/components/ScrollToTop";
 import AboutPage from "@/pages/AboutPage";
 import ProjectsPage from "@/pages/ProjectsPage";
 import CertificatesPage from "@/pages/CertificatesPage";
@@ -23,6 +24,7 @@ export default function App() {
           <ContactPage />
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </>
   );
