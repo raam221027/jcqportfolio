@@ -1,12 +1,27 @@
+import { motion, useReducedMotion } from "framer-motion";
 import SectionScrollIndicator from "./SectionScrollIndicator";
 
 export default function Hero() {
+  const reduce = useReducedMotion();
+  const motionProps = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 24, filter: "blur(8px)" },
+        animate: { opacity: 1, y: 0, filter: "blur(0px)" },
+        transition: {
+          duration: 0.7,
+          delay: 0.05,
+          ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+          filter: { duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+        },
+      };
+
   return (
     <section
       id="home"
       className="relative flex min-h-[calc(100svh-60px)] items-center justify-center overflow-hidden px-4 sm:px-6"
     >
-      <div className="relative z-10 mx-auto max-w-3xl text-center">
+      <motion.div {...motionProps} className="relative z-10 mx-auto max-w-3xl text-center">
         <h1 className="whitespace-nowrap font-display text-3xl font-bold leading-[1.05] tracking-tight text-fg sm:text-5xl md:text-6xl lg:text-6xl">
           Hi, I'm <span className="gradient-text">Joemar Questadio</span>
         </h1>
@@ -35,7 +50,7 @@ export default function Hero() {
         </div>
 
         <SectionScrollIndicator targetId="about" />
-      </div>
+      </motion.div>
     </section>
   );
 }
