@@ -32,7 +32,7 @@ export default function CertificatesPage() {
             setLightbox({ src: programmerOfTheYearImg, alt: `${recognition.name} certificate` })
           }
           aria-label={`View ${recognition.name} certificate in full size`}
-          className="relative mb-6 block w-full cursor-zoom-in rounded-xl border border-brand-cyan400/40 bg-bg-elevated px-5 py-4 text-left shadow-[0_0_24px_rgb(0_195_255/0.15)] transition-all duration-200 ease-out-quart hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_0_32px_rgb(0_195_255/0.25)]"
+          className="relative mb-6 block w-full cursor-pointer rounded-xl border border-brand-cyan400/40 bg-bg-elevated px-5 py-4 text-left shadow-[0_0_24px_rgb(0_195_255/0.15)] transition-all duration-200 ease-out-quart hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_0_32px_rgb(0_195_255/0.25)]"
         >
           <div className="absolute -left-[27px] top-6 h-3.5 w-3.5 rounded-full bg-brand-cyan shadow-[0_0_12px_hsl(190_95%_39%)]" />
           <div className="mb-1 text-[11px] font-semibold uppercase tracking-[0.1em] text-brand-cyan400">
