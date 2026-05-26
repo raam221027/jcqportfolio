@@ -25,7 +25,7 @@ export default function PageShell({ id, children, className = "", nextId }: Page
       id={id}
       {...motionProps}
       className={[
-        "scroll-mt-20 px-4 pb-16 pt-4 sm:scroll-mt-14 sm:px-6 sm:pb-20 sm:pt-10",
+        "scroll-mt-20 px-4 pb-16 pt-2 sm:scroll-mt-14 sm:px-6 sm:pb-20 sm:pt-10",
         className,
       ].join(" ")}
     >
