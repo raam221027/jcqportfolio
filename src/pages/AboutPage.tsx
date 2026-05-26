@@ -6,7 +6,7 @@ import { profile, valueIBring } from "@/data/profile";
 
 export default function AboutPage() {
   return (
-    <PageShell className="mx-auto max-w-5xl">
+    <PageShell id="about" className="mx-auto max-w-5xl">
       <PageHeader
         eyebrow="About"
         title={

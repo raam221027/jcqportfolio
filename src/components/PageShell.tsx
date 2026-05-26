@@ -1,22 +1,34 @@
 import type { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 interface PageShellProps {
+  id: string;
   children: ReactNode;
   className?: string;
 }
 
-export default function PageShell({ children, className = "" }: PageShellProps) {
+export default function PageShell({ id, children, className = "" }: PageShellProps) {
+  const reduce = useReducedMotion();
+  const motionProps = reduce
+    ? {}
+    : {
+        initial: { opacity: 0, y: 16 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: true, margin: "-15% 0px" },
+        transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+      };
+
   return (
-    <motion.main
-      initial={{ opacity: 0, y: 12 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -12 }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className={["min-h-[calc(100vh-60px)] px-4 pb-20 pt-24 sm:px-6 sm:pb-24", className].join(" ")}
+    <motion.section
+      id={id}
+      {...motionProps}
+      className={[
+        "scroll-mt-20 px-4 py-16 sm:scroll-mt-24 sm:px-6 sm:py-20",
+        className,
+      ].join(" ")}
     >
       {children}
-    </motion.main>
+    </motion.section>
   );
 }
 

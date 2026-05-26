@@ -38,6 +38,11 @@
     @apply bg-bg text-fg font-sans antialiased;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
   body {
     min-height: 100vh;
   }
