@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowUp } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { smoothScrollTo } from "@/lib/smoothScroll";
 
 export default function ScrollToTop() {
   const reduce = useReducedMotion();
@@ -21,7 +22,8 @@ export default function ScrollToTop() {
   }, []);
 
   const onClick = () => {
-    window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" });
+    smoothScrollTo(0);
+    history.pushState(null, "", "#home");
   };
 
   const motionProps = reduce
