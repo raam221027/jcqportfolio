@@ -7,7 +7,7 @@ export default function Hero() {
       className="relative flex min-h-[calc(100svh-60px)] items-center justify-center overflow-hidden px-4 sm:px-6"
     >
       <div className="relative z-10 mx-auto max-w-3xl text-center">
-        <h1 className="whitespace-nowrap font-display text-3xl font-bold leading-[1.05] tracking-tight text-fg sm:text-5xl md:text-6xl lg:text-7xl">
+        <h1 className="whitespace-nowrap font-display text-3xl font-bold leading-[1.05] tracking-tight text-fg sm:text-5xl md:text-6xl lg:text-6xl">
           Hi, I'm <span className="gradient-text">Joemar Questadio</span>
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-fg-muted sm:mt-6 sm:text-lg">
