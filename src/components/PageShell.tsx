@@ -30,7 +30,7 @@ export default function PageShell({ id, children, className = "", nextId }: Page
       ].join(" ")}
     >
       {children}
-      {nextId ? <SectionScrollIndicator targetId={nextId} /> : null}
+      {nextId ? <SectionScrollIndicator targetId={nextId} revealOnInView /> : null}
     </motion.section>
   );
 }
