@@ -184,10 +184,13 @@ export default function TechStackSphere({
         depth: 1,
         wheelZoom: false,
         imageScale: 2,
-        activeCursor: "default",
+        activeCursor: "pointer",
         tooltip: "native",
         initial: [0.1, -0.1],
-        clickToFront: 500,
+        // Follow the icon's href immediately on click/tap. On touch devices there is no
+        // hover to pre-position an icon at the front, so a `clickToFront` delay would
+        // require two taps to navigate.
+        clickToFront: false,
         tooltipDelay: 0,
         outlineColour: "#0000",
         // Cursor position drives rotation; speed ramps from `minSpeed` (idle) → `maxSpeed` (hover near edge).

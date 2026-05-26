@@ -83,7 +83,7 @@ export default function ProjectsPage() {
                   setLightbox({ src: p.image!, alt: `${p.title} screenshot` })
                 }
                 aria-label={`View ${p.title} screenshot in full size`}
-                className="mb-4 flex h-52 w-full cursor-zoom-in items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 transition-opacity hover:opacity-90"
+                className="mb-4 flex h-52 w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 transition-opacity hover:opacity-90"
               >
                 <img
                   src={p.image}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
             role="dialog"
             aria-modal="true"
             aria-label={lightbox.alt}
-            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
           >
             <motion.img
               initial={{ scale: 0.95, opacity: 0 }}

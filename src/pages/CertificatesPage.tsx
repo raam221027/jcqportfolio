@@ -69,7 +69,7 @@ export default function CertificatesPage() {
             role="dialog"
             aria-modal="true"
             aria-label={lightbox.alt}
-            className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
           >
             <motion.img
               initial={{ scale: 0.95, opacity: 0 }}
