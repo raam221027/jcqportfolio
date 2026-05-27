@@ -12,11 +12,21 @@ export default function CertificatesPage() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightbox(null);
     };
+    const onDocClick = (e: MouseEvent) => {
+      const target = e.target as Element | null;
+      if (target?.closest("[data-lightbox-image]")) return;
+      setLightbox(null);
+    };
     window.addEventListener("keydown", onKey);
+    const attachId = window.setTimeout(() => {
+      document.addEventListener("click", onDocClick);
+    }, 0);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
+      window.clearTimeout(attachId);
+      document.removeEventListener("click", onDocClick);
       document.body.style.overflow = prevOverflow;
     };
   }, [lightbox]);
@@ -65,30 +75,31 @@ export default function CertificatesPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            onClick={() => setLightbox(null)}
             role="dialog"
             aria-modal="true"
             aria-label={lightbox.alt}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm sm:p-8"
           >
-            <motion.img
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.95, opacity: 0 }}
-              transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
-              src={lightbox.src}
-              alt={lightbox.alt}
-              onClick={(e) => e.stopPropagation()}
-              className="max-h-[92vh] max-w-[95vw] cursor-default rounded-lg object-contain shadow-2xl"
-            />
-            <button
-              type="button"
-              onClick={() => setLightbox(null)}
-              aria-label="Close image"
-              className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/40 text-xl leading-none text-white transition-colors hover:border-white/40 hover:bg-black/60"
-            >
-              ×
-            </button>
+            <div className="relative">
+              <motion.img
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+                src={lightbox.src}
+                alt={lightbox.alt}
+                data-lightbox-image="true"
+                className="block max-h-[92vh] max-w-[95vw] cursor-default rounded-lg object-contain shadow-2xl md:max-h-[85vh] md:max-w-[80vw]"
+              />
+              <button
+                type="button"
+                onClick={() => setLightbox(null)}
+                aria-label="Close image"
+                className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/70 text-xl leading-none text-white transition-colors hover:border-white/40 hover:bg-black md:-right-12 md:top-0"
+              >
+                ×
+              </button>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
