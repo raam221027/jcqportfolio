@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import PageShell, { PageHeader } from "@/components/PageShell";
 import { recognition, certificates } from "@/data/certificates";
@@ -67,42 +68,45 @@ export default function CertificatesPage() {
         ))}
       </div>
 
-      <AnimatePresence>
-        {lightbox && (
-          <motion.div
-            key="lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            role="dialog"
-            aria-modal="true"
-            aria-label={lightbox.alt}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm sm:p-8"
-          >
-            <div className="relative">
-              <motion.img
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
-                src={lightbox.src}
-                alt={lightbox.alt}
-                data-lightbox-image="true"
-                className="block max-h-[92vh] max-w-[95vw] cursor-default rounded-lg object-contain shadow-2xl md:max-h-[85vh] md:max-w-[80vw]"
-              />
-              <button
-                type="button"
-                onClick={() => setLightbox(null)}
-                aria-label="Close image"
-                className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/70 text-xl leading-none text-white transition-colors hover:border-white/40 hover:bg-black md:-right-12 md:top-0"
-              >
-                ×
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {createPortal(
+        <AnimatePresence>
+          {lightbox && (
+            <motion.div
+              key="lightbox"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label={lightbox.alt}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm sm:p-8"
+            >
+              <div className="relative">
+                <motion.img
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.95, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: [0.25, 1, 0.5, 1] }}
+                  src={lightbox.src}
+                  alt={lightbox.alt}
+                  data-lightbox-image="true"
+                  className="block max-h-[92vh] max-w-[95vw] cursor-default rounded-lg object-contain shadow-2xl md:max-h-[85vh] md:max-w-[80vw]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setLightbox(null)}
+                  aria-label="Close image"
+                  className="absolute right-2 top-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/70 text-xl leading-none text-white transition-colors hover:border-white/40 hover:bg-black md:-right-12 md:top-0"
+                >
+                  ×
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
     </PageShell>
   );
 }
