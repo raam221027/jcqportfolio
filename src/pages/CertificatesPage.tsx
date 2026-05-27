@@ -22,7 +22,7 @@ export default function CertificatesPage() {
   }, [lightbox]);
 
   return (
-    <PageShell id="certificates" nextId="contact" className="mx-auto max-w-2xl">
+    <PageShell id="certificates" className="mx-auto max-w-2xl">
       <PageHeader eyebrow="Certificates" title="Achivements & Certifications" />
       <div className="relative pl-7">
         <div className="absolute bottom-2 left-2 top-2 w-px bg-gradient-to-b from-transparent via-brand-cyan to-transparent" />
