@@ -54,18 +54,34 @@ export default function CertificatesPage() {
             <div className="font-mono text-md text-fg-dim">{recognition.year}</div>
           </div>
         </button>
-        {certificates.map((c) => (
-          <div
-            key={c.name}
-            className="relative mb-3.5 rounded-lg border border-surface-2 bg-bg-elevated px-4 py-3"
-          >
-            <div className="absolute -left-[25px] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full border-2 border-brand-cyan bg-gray-800" />
-            <div className="flex items-center justify-between gap-3">
-              <div className="text-sm text-fg">{c.name}</div>
-              <div className="font-mono text-xs text-fg-dim">{c.year}</div>
+        {certificates.map((c) =>
+          c.image ? (
+            <button
+              key={c.name}
+              type="button"
+              onClick={() => setLightbox({ src: c.image!, alt: `${c.name} certificate` })}
+              aria-label={`View ${c.name} certificate in full size`}
+              className="relative mb-3.5 block w-full cursor-pointer rounded-lg border border-surface-2 bg-bg-elevated px-4 py-3 text-left transition-all duration-200 ease-out-quart hover:-translate-y-0.5 hover:border-brand-cyan hover:shadow-[0_0_24px_rgb(0_195_255/0.2)]"
+            >
+              <div className="absolute -left-[25px] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full border-2 border-brand-cyan bg-brand-cyan" />
+              <div className="flex items-center justify-between gap-3">
+                <div className="text-sm text-fg">{c.name}</div>
+                <div className="font-mono text-xs text-fg-dim">{c.year}</div>
+              </div>
+            </button>
+          ) : (
+            <div
+              key={c.name}
+              className="relative mb-3.5 rounded-lg border border-surface-2 bg-bg-elevated px-4 py-3"
+            >
+              <div className="absolute -left-[25px] top-1/2 h-2.5 w-2.5 -translate-y-1/2 rounded-full border-2 border-brand-cyan bg-gray-800" />
+              <div className="flex items-center justify-between gap-3">
+                <div className="text-sm text-fg">{c.name}</div>
+                <div className="font-mono text-xs text-fg-dim">{c.year}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ),
+        )}
       </div>
 
       {createPortal(
