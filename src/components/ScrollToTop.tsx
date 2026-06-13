@@ -44,7 +44,7 @@ export default function ScrollToTop() {
           onClick={onClick}
           aria-label="Scroll to top"
           {...motionProps}
-          className="fixed bottom-6 right-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-border-hover bg-surface-1/80 text-fg-muted shadow-lg backdrop-blur-sm transition-colors hover:border-brand-cyan hover:text-fg sm:bottom-8 sm:right-6 md:hidden"
+          className="fixed bottom-6 right-4 z-50 hidden h-11 w-11 items-center justify-center rounded-full border border-border-hover bg-surface-1/80 text-fg-muted shadow-lg backdrop-blur-sm transition-colors hover:border-brand-cyan hover:text-fg sm:bottom-8 sm:right-6"
         >
           <ArrowUp className="h-5 w-5" aria-hidden />
         </motion.button>

@@ -86,7 +86,7 @@ export default function ContactPage() {
         : "Send message";
 
   return (
-    <PageShell id="contact" className="mx-auto max-w-lg">
+    <PageShell id="contact" className="mx-auto max-w-lg min-h-[calc(100vh-11rem)] sm:min-h-[calc(100vh-6rem)]">
       <PageHeader
         eyebrow="Contact"
         title="Let's build something."
