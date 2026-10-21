@@ -22,7 +22,7 @@ export default function App() {
       if (!anchor) return;
       const hash = anchor.getAttribute("href");
       if (!hash || hash === "#") return;
-      const id = hash.slice();
+      const id = hash.slice(1);
       if (!document.getElementById(id)) return;
       e.preventDefault();
       scrollToSection(id);

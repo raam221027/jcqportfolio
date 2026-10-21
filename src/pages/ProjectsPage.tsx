@@ -7,6 +7,7 @@ import TechStackSphere from "@/components/TechStackSphere";
 import { projects } from "@/data/projects";
 
 const VARIANT_FOR: Record<string, "success" | "indigo" | "cyan"> = {
+  Live: "success",
   "Capstone Project": "success",
   "Internship Project": "indigo",
 };
@@ -78,7 +79,10 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <div className="mb-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-fg-muted">
+      <div
+        id="project-list"
+        className="mb-6 text-[11px] font-semibold uppercase tracking-[0.12em] text-fg-muted"
+      >
         Projects
       </div>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-2">
@@ -94,23 +98,33 @@ export default function ProjectsPage() {
                   setLightbox({ src: p.image!, alt: `${p.title} screenshot` })
                 }
                 aria-label={`View ${p.title} screenshot in full size`}
-                className="mb-4 flex h-52 w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 transition-opacity hover:opacity-90"
+                className="mb-4 flex aspect-[22/21] w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 transition-opacity hover:opacity-90"
               >
                 <img
                   src={p.image}
                   alt={`${p.title} screenshot`}
-                  className="h-full w-full object-contain sm:object-cover"
+                  className={`h-full w-full ${
+                    p.imageAlign === "top" ? "object-cover object-top" : "object-contain"
+                  }`}
                   loading="lazy"
                 />
               </button>
             ) : (
-              <div className="mb-4 flex h-52 items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
+              <div className="mb-4 flex aspect-[22/21] w-full items-center justify-center overflow-hidden rounded-lg border border-surface-2 bg-gradient-to-br from-bg-deep to-brand-cyan400/10 font-mono text-xs text-fg-dim">
                 screenshot
               </div>
             )}
             <div className="mb-2 flex items-center justify-between gap-2">
               <h3 className="text-lg font-semibold">{p.title}</h3>
-              <Pill variant={VARIANT_FOR[p.status]}>{p.status}</Pill>
+              <Pill variant={VARIANT_FOR[p.status]}>
+                {p.status === "Live" && (
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-success opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-success" />
+                  </span>
+                )}
+                {p.status}
+              </Pill>
             </div>
             <p className="mb-3.5 text-sm leading-relaxed text-fg-muted">{p.desc}</p>
             <div className="flex flex-wrap gap-1.5">
@@ -118,6 +132,16 @@ export default function ProjectsPage() {
                 <Pill key={t}>{t}</Pill>
               ))}
             </div>
+            {p.liveUrl && (
+              <a
+                href={p.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-brand-cyan400 hover:underline"
+              >
+                Visit site ↗
+              </a>
+            )}
           </article>
         ))}
       </div>

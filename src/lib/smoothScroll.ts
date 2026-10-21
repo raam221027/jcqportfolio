@@ -52,6 +52,11 @@ export function scrollToSection(id: string): void {
   if (!el) return;
   const header = document.querySelector("header");
   const offset = (header?.offsetHeight ?? 60) + 12;
-  const targetY = el.getBoundingClientRect().top + window.scrollY - offset;
-  smoothScrollTo(targetY);
+  // Sum offsetTop instead of getBoundingClientRect so the PageShell enter
+  // animation (translateY) doesn't skew the target position.
+  let top = 0;
+  for (let node: HTMLElement | null = el; node; node = node.offsetParent as HTMLElement | null) {
+    top += node.offsetTop;
+  }
+  smoothScrollTo(top - offset);
 }
