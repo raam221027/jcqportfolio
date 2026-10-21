@@ -57,6 +57,7 @@ const PAUSE_AFTER_PROMPT_MS = 420;
 const PAUSE_AFTER_BUILD_MS = 2000;
 const LINE_MS = 500;
 const LINE_MS_FAST = 100;
+const HOLD_BEFORE_RESTART_MS = 20000;
 
 const RUN_END = "npm run".length;
 
@@ -71,7 +72,8 @@ function nextTypeDelay(charIndex: number): number {
 type Phase = "typing" | "revealing" | "holding";
 
 export function TerminalBoot({ className }: { className?: string }) {
-  const script = useMemo(() => buildScript(randomDoneSeconds()), []);
+  const [doneSeconds, setDoneSeconds] = useState(randomDoneSeconds);
+  const script = useMemo(() => buildScript(doneSeconds), [doneSeconds]);
   const buildCompleteIndex = useMemo(
     () => script.findIndex((l) => l.text === "Build complete"),
     [script],
@@ -114,6 +116,13 @@ export function TerminalBoot({ className }: { className?: string }) {
       } else {
         timerRef.current = window.setTimeout(() => setPhase("holding"), 400);
       }
+    } else if (phase === "holding") {
+      timerRef.current = window.setTimeout(() => {
+        setTyped(0);
+        setRevealed(0);
+        setDoneSeconds(randomDoneSeconds());
+        setPhase("typing");
+      }, HOLD_BEFORE_RESTART_MS);
     }
 
     return clearTimer;
