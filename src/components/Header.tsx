@@ -4,10 +4,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import ThemeSwitch from "./ThemeSwitch";
 
 const NAV = [
-  { id: "about", label: "About" },
-  { id: "projects", label: "Projects" },
-  { id: "certificates", label: "Certificates" },
-  { id: "contact", label: "Contact" },
+  { id: "about", label: "About", href: "#about" },
+  { id: "projects", label: "Projects", href: "#project-list" },
+  { id: "certificates", label: "Certificates", href: "#certificates" },
+  { id: "contact", label: "Contact", href: "#contact" },
 ];
 
 const SECTION_IDS = ["home", "about", "projects", "certificates", "contact"];
@@ -90,7 +90,7 @@ export default function Header() {
 
         <nav className="hidden items-center justify-center gap-5 md:flex lg:gap-6">
           {NAV.map((it) => (
-            <a key={it.id} href={`#${it.id}`} className={linkClass(it.id)}>
+            <a key={it.id} href={it.href} className={linkClass(it.id)}>
               {it.label}
             </a>
           ))}
@@ -126,7 +126,7 @@ export default function Header() {
               {NAV.map((it) => (
                 <a
                   key={it.id}
-                  href={`#${it.id}`}
+                  href={it.href}
                   onClick={() => setMenuOpen(false)}
                   className={mobileLinkClass(it.id)}
                 >
