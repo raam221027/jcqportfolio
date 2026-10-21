@@ -34,7 +34,7 @@ export default function CertificatesPage() {
 
   return (
     <PageShell id="certificates" className="mx-auto max-w-2xl">
-      <PageHeader eyebrow="Certificates" title="Achivements & Certifications" />
+      <PageHeader eyebrow="Certificates" title="Achievements & Certifications" />
       <div className="relative pl-7">
         <div className="absolute bottom-2 left-2 top-2 w-px bg-gradient-to-b from-transparent via-brand-cyan to-transparent" />
         <button
