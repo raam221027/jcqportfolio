@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Download } from "lucide-react";
 import SectionScrollIndicator from "./SectionScrollIndicator";
+import { profile } from "@/data/profile";
 
 export default function Hero() {
   const reduce = useReducedMotion();
@@ -42,6 +44,14 @@ export default function Hero() {
             className="rounded-lg border border-border-hover bg-transparent px-5 py-2.5 text-sm font-medium text-fg transition-colors hover:border-brand-cyan"
           >
             Get in touch
+          </a>
+          <a
+            href={profile.resumeUrl}
+            download={profile.resumeFileName}
+            className="inline-flex items-center gap-2 rounded-lg border border-border-hover bg-transparent px-5 py-2.5 text-sm font-medium text-fg transition-colors hover:border-brand-cyan"
+          >
+            <Download className="h-4 w-4" />
+            Download resume
           </a>
         </div>
 

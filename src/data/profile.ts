@@ -1,3 +1,5 @@
+import resumePdf from "@/assets/Joemar Questadio - Resume.pdf";
+
 export const valueIBring = [
   "Build scalable web apps (Laravel + React)",
   "Integrate hardware with web systems (biometric devices, APIs)",
@@ -12,7 +14,9 @@ export const profile = {
   country: "United States",
   bio: "Full Stack Developer (Laravel, React) focused on scalable web applications and system integration. Developed an HRMIS with face recognition attendance and a self-ordering kiosk system.",
   bioMore: "Open to remote and on-site opportunities",
- 
+  resumeUrl: resumePdf,
+  resumeFileName: "Joemar-Questadio-Resume.pdf",
+
   facts: [
     { label: "Role", value: "Full Stack Developer" },
     { label: "Tech Stack", value: "Laravel, React, MySQL, MSSQL" },

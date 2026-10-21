@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import ThemeSwitch from "./ThemeSwitch";
+import { profile } from "@/data/profile";
 
 const NAV = [
   { id: "about", label: "About", href: "#about" },
@@ -97,6 +98,14 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center justify-self-end gap-2">
+          <a
+            href={profile.resumeUrl}
+            download={profile.resumeFileName}
+            className="hidden items-center gap-1.5 rounded-md border border-surface-2 bg-surface-1/50 px-3 py-1.5 text-sm text-fg-muted transition-colors hover:text-fg md:inline-flex"
+          >
+            <Download className="h-4 w-4" />
+            Resume
+          </a>
           <ThemeSwitch />
           <button
             type="button"
@@ -133,6 +142,15 @@ export default function Header() {
                   {it.label}
                 </a>
               ))}
+              <a
+                href={profile.resumeUrl}
+                download={profile.resumeFileName}
+                onClick={() => setMenuOpen(false)}
+                className="inline-flex items-center justify-center gap-2 rounded-md px-3 py-2.5 text-sm text-fg-muted transition-colors hover:bg-surface-1/60 hover:text-fg"
+              >
+                <Download className="h-4 w-4" />
+                Download resume
+              </a>
             </nav>
           </motion.div>
         )}
