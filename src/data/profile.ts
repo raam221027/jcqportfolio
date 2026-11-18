@@ -15,7 +15,7 @@ export const profile = {
   bio: "Full Stack Developer (Laravel, React) focused on scalable web applications and system integration. Developed an HRMIS with face recognition attendance and a self-ordering kiosk system.",
   bioMore: "Open to remote and on-site opportunities",
   resumeUrl: resumePdf,
-  resumeFileName: "Joemar-Questadio-Resume.pdf",
+  resumeFileName: "Joemar_Questadio_Resume.pdf",
 
   facts: [
     { label: "Role", value: "Full Stack Developer" },
