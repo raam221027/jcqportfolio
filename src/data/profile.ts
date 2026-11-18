@@ -1,4 +1,4 @@
-import resumePdf from "@/assets/Joemar Questadio.pdf";
+import resumePdf from "@/assets/Joemar_Questadio_Resume.pdf";
 
 export const valueIBring = [
   "Build scalable web apps (Laravel + React)",
